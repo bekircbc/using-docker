@@ -1,6 +1,44 @@
 # Basic Command
 
-      docker pull node
+- installing docker images
+
+        docker pull node
+        docker pull redis
+
+- seeing list of running conainers and images list
+
+        docker images
+        docker run redis
+        docker ps
+        docker run -d redis
+        docker stop <container ID>
+        docker ps -a
+        docker restart < ID>
+
+- running redis on particular port
+
+        docker run -p6000:6379 redis   -- computer port6000, docker port 6379
+        docker run -p6001:6379 redis
+
+        docker run -d -p6000:6379 --name redis-older redis:4.0
+        docker run -d -p6001:6379 --name redis-latest redis
+
+- for getting inside a container
+
+        docker exec -it <container ID> /bin/bash
+
+        write : ls, cd /, env, exit
+
+- if you can not stop the container..
+
+        sudo aa-remove-unknown
+        docker stop <container ID>
+
+# Docker Project
+
+![How docker development environment works](./public/images/how_docker_works_inproject.png)
+
+- This foto is taken from Docker Tutorial for Beginners, owner : "TechWorld with Nana".
 
 # Installing docker on Linux
 
@@ -32,31 +70,4 @@
 
         sudo usermod -aG docker user
 
-- for installing images
-
-        docker pull node
-        docker pull redis
-
-- for seeing list running conainers and images list
-
-        docker images
-        docker run redis
-        docker ps
-        docker run -d redis
-        docker stop <container ID>
-        docker ps -a
-        docker restart < ID>
-
-- for running redis on partcular port
-
-        docker run -p6000:6379 redis   -- computer port6000, docker port 6379
-        docker run -p6001:6379 redis
-
-- if you can not stop the container..
-
-        sudo aa-remove-unknown
-        docker stop <container ID>
-
 - [for more information](https://docs.docker.com/engine/install/ubuntu/)
-
-        sudo chmod 666 /var/run/docker.sock
